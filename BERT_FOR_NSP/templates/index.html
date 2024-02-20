@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Sentence Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Next Sentence Prediction</h1>
+        <form action="/predict" method="post">
+            <div class="input-box">
+                <label for="input_text1">Input Text 1:</label>
+                <textarea id="input_text1" name="input_text1" rows="4" cols="50" required></textarea>
+            </div>
+            <div class="input-box">
+                <label for="input_text2">Input Text 2:</label>
+                <textarea id="input_text2" name="input_text2" rows="4" cols="50" required></textarea>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction %}
+            <p>Prediction: {{ prediction }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

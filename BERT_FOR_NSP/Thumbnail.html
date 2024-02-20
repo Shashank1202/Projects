@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2; /* Body background color */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .thumbnail {
+            width: 200px;
+            height: 200px;
+            background-color: #3498db; /* Thumbnail background color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
+
+        .model-name {
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+    <title>BERT and Transformers</title>
+</head>
+<body>
+    <div class="container">
+        <div class="thumbnail" id="bert">
+            <span class="model-name">BERT</span>
+        </div>
+        <div class="thumbnail" id="transformer">
+            <span class="model-name">Transformer</span>
+        </div>
+        <div class="thumbnail" id="llm">
+            <span class="model-name">LLMs</span>
+        </div>
+    </div>
+</body>
+</html>
