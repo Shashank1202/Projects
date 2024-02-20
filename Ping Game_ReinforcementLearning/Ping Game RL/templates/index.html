@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+</head>
+<body>
+    <h1>Pong Game</h1>
+    <p>{{ player_name }}: <span id="player_score">0</span></p>
+    <p>{{ opponent_name }}: <span id="opponent_score">0</span></p>
+
+    <canvas id="pongCanvas" width="600" height="400" style="border:1px solid #000;"></canvas>
+
+    <script>
+        const canvas = document.getElementById('pongCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function updateScores(data) {
+            document.getElementById('player_score').innerText = data.player_score;
+            document.getElementById('opponent_score').innerText = data.opponent_score;
+        }
+
+        function drawPaddle(x, y) {
+            ctx.fillStyle = '#FF0000';
+            ctx.fillRect(x, y, 10, 60);
+        }
+
+        function drawBall(x, y) {
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, Math.PI * 2);
+            ctx.fillStyle = '#FF0000';
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function draw() {
+            fetch('/get_state')
+                .then(response => response.json())
+                .then(data => {
+                    updateScores(data);
+
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    drawPaddle(50, data.player_paddle_y);
+                    drawPaddle(canvas.width - 50 - 10, data.computer_paddle_y);
+                    drawBall(data.ball_x, data.ball_y);
+                });
+
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    </script>
+</body>
+</html>
