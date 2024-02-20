@@ -1,0 +1,26 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Detection</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Spam Detection</h1>
+        <form action="/predict" method="post">
+            <label for="text">Enter text:</label>
+            <textarea id="text" name="text" rows="4" cols="50"></textarea>
+            <button type="submit">Predict</button>
+        </form>
+        {% if text %}
+            <p><strong>Input Text:</strong> {{ text }}</p>
+            <p><strong>Prediction:</strong> {{ prediction }}</p>
+        {% endif %}
+    </div>
+    <script src="static/script.js"></script>
+</body>
+</html>
