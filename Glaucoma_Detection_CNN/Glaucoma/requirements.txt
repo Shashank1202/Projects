@@ -1,8 +1,0 @@
-Flask==1.1.1
-keras
-tensorflow
-numpy
-werkzeug
-gunicorn
-requests
-pillow
